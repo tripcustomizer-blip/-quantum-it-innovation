@@ -20,6 +20,7 @@ const blogPosts = [
     borderColor: 'hover:border-violet-500/30',
     tagColor: 'text-violet-400 border-violet-500/30 bg-violet-500/5',
     image: '/assets/blogs/tech.jpg',
+    slug: 'generative-ai-enterprise-software',
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ const blogPosts = [
     borderColor: 'hover:border-purple-500/30',
     tagColor: 'text-purple-400 border-purple-500/30 bg-purple-500/5',
     image: '/assets/blogs/design.jpg',
+    slug: 'mobile-app-ux-trends-2026',
   },
   {
     id: 3,
@@ -44,6 +46,7 @@ const blogPosts = [
     borderColor: 'hover:border-teal-500/30',
     tagColor: 'text-teal-400 border-teal-500/30 bg-teal-500/5',
     image: '/assets/blogs/cloud.jpg',
+    slug: 'serverless-nextjs-edge-computing',
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ const blogPosts = [
     borderColor: 'hover:border-orange-500/30',
     tagColor: 'text-orange-400 border-orange-500/30 bg-orange-500/5',
     image: '/assets/blogs/marketplace.jpg',
+    slug: 'search-engine-landscaping-ai-search',
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ const blogPosts = [
     borderColor: 'hover:border-blue-500/30',
     tagColor: 'text-blue-400 border-blue-500/30 bg-blue-500/5',
     image: '/assets/blogs/smart-home.jpg',
+    slug: 'securing-iot-devices-firmware',
   },
   {
     id: 6,
@@ -80,6 +85,7 @@ const blogPosts = [
     borderColor: 'hover:border-red-500/30',
     tagColor: 'text-red-400 border-red-500/30 bg-red-500/5',
     image: '/assets/blogs/ecommerce.jpg',
+    slug: 'mastering-aso-app-store-optimization',
   },
 ]
 
@@ -171,9 +177,10 @@ export default function BlogPage() {
           {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPosts.map((post) => (
-                <article
+                <Link
                   key={post.id}
-                  className={`rounded-2xl border border-[#2a2a2a] bg-[#111] bg-gradient-to-br ${post.accentColor} to-transparent ${post.borderColor} transition-all duration-300 flex flex-col group overflow-hidden`}
+                  href={`/blog/${post.slug}`}
+                  className={`rounded-2xl border border-[#2a2a2a] bg-[#111] bg-gradient-to-br ${post.accentColor} to-transparent ${post.borderColor} transition-all duration-300 flex flex-col group overflow-hidden hover:scale-[1.01]`}
                 >
                   <div className="w-full h-48 overflow-hidden relative">
                     <img
@@ -213,7 +220,7 @@ export default function BlogPage() {
                       </span>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           ) : (
