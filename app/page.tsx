@@ -1143,6 +1143,41 @@ interface BlogItem {
   updatedAt: string
 }
 
+function getBlogImage(title: string, originalImage: string): string {
+  const lower = title.toLowerCase();
+  if (lower.includes('shipping') || lower.includes('delivery')) {
+    return 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('walmart') || lower.includes('marketplace') || lower.includes('ecommerce')) {
+    return 'https://images.unsplash.com/photo-1563013544-824ae1d704d3?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('instacart') || lower.includes('shopper') || lower.includes('grocery')) {
+    return 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('chatgpt') || lower.includes('ai') || lower.includes('dopple') || lower.includes('quillbot') || lower.includes('generative')) {
+    return 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('zigbee') || lower.includes('z-wave') || lower.includes('smart home') || lower.includes('iot')) {
+    return 'https://images.unsplash.com/photo-1558002038-1055907df827?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('web 2.0') || lower.includes('web 3.0') || lower.includes('blockchain')) {
+    return 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('azure') || lower.includes('aws') || lower.includes('google cloud') || lower.includes('cloud')) {
+    return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('youtube') || lower.includes('shorts') || lower.includes('video')) {
+    return 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=60';
+  }
+  if (lower.includes('canva') || lower.includes('photo') || lower.includes('design') || lower.includes('chub')) {
+    return 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&auto=format&fit=crop&q=60';
+  }
+  if (originalImage && originalImage.startsWith('http')) {
+    return originalImage;
+  }
+  return 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=60';
+}
+
 function RecentBlogsSection() {
   const [blogs, setBlogs] = useState<BlogItem[]>([])
   const [slides, setSlides] = useState<BlogItem[][]>([])
@@ -1213,7 +1248,7 @@ function RecentBlogsSection() {
                 <div key={blog.id} className="w-full max-w-[340px] md:max-w-[385px] shrink-0 flex">
                   <div className="card rounded-2xl flex flex-col w-full min-h-[440px] bg-[#111111] border border-[#2a2a2a] overflow-hidden hover:border-blue-500/20 hover:-translate-y-1 transition-all duration-300">
                     <img
-                      src={blog.image}
+                      src={getBlogImage(blog.title, blog.image)}
                       alt={blog.title}
                       className="w-full h-[200px] object-cover rounded-t-2xl border-b border-[#2a2a2a]/40"
                       loading="lazy"

@@ -85,20 +85,22 @@ export default function Navbar() {
                 <ChevronDown size={14} className="transition-transform group-hover:rotate-180 duration-200" />
               </button>
 
-              <div className="mega-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-[#111111] border border-[#2a2a2a] rounded-xl shadow-2xl shadow-black/60 p-3 z-50">
-                <ul className="space-y-1">
-                  {servicesList.map(item => (
-                    <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        className="block px-3 py-2 text-xs text-gray-400 hover:text-white hover:bg-[#1a1a1a] rounded-lg transition-colors flex items-center gap-2 group/item"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover/item:bg-blue-400 transition-colors" />
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="mega-menu absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64 z-50">
+                <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl shadow-2xl shadow-black/60 p-3">
+                  <ul className="space-y-1">
+                    {servicesList.map(item => (
+                      <li key={item.label}>
+                        <Link
+                          href={item.href}
+                          className="block px-3 py-2 text-xs text-gray-400 hover:text-white hover:bg-[#1a1a1a] rounded-lg transition-colors flex items-center gap-2 group/item"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover/item:bg-blue-400 transition-colors" />
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </li>
 

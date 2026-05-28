@@ -19,6 +19,7 @@ const blogPosts = [
     accentColor: 'from-violet-500/20 to-fuchsia-500/10',
     borderColor: 'hover:border-violet-500/30',
     tagColor: 'text-violet-400 border-violet-500/30 bg-violet-500/5',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=600&auto=format&fit=crop&q=60',
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const blogPosts = [
     accentColor: 'from-purple-500/20 to-pink-500/10',
     borderColor: 'hover:border-purple-500/30',
     tagColor: 'text-purple-400 border-purple-500/30 bg-purple-500/5',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop&q=60',
   },
   {
     id: 3,
@@ -41,6 +43,7 @@ const blogPosts = [
     accentColor: 'from-teal-500/20 to-blue-500/10',
     borderColor: 'hover:border-teal-500/30',
     tagColor: 'text-teal-400 border-teal-500/30 bg-teal-500/5',
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&auto=format&fit=crop&q=60',
   },
   {
     id: 4,
@@ -52,6 +55,7 @@ const blogPosts = [
     accentColor: 'from-orange-500/20 to-yellow-500/10',
     borderColor: 'hover:border-orange-500/30',
     tagColor: 'text-orange-400 border-orange-500/30 bg-orange-500/5',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=60',
   },
   {
     id: 5,
@@ -63,6 +67,7 @@ const blogPosts = [
     accentColor: 'from-blue-500/20 to-indigo-500/10',
     borderColor: 'hover:border-blue-500/30',
     tagColor: 'text-blue-400 border-blue-500/30 bg-blue-500/5',
+    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=600&auto=format&fit=crop&q=60',
   },
   {
     id: 6,
@@ -74,6 +79,7 @@ const blogPosts = [
     accentColor: 'from-red-500/20 to-orange-500/10',
     borderColor: 'hover:border-red-500/30',
     tagColor: 'text-red-400 border-red-500/30 bg-red-500/5',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60',
   },
 ]
 
@@ -167,35 +173,45 @@ export default function BlogPage() {
               {filteredPosts.map((post) => (
                 <article
                   key={post.id}
-                  className={`p-6 rounded-2xl border border-[#2a2a2a] bg-[#111] bg-gradient-to-br ${post.accentColor} to-transparent ${post.borderColor} transition-all duration-300 flex flex-col group`}
+                  className={`rounded-2xl border border-[#2a2a2a] bg-[#111] bg-gradient-to-br ${post.accentColor} to-transparent ${post.borderColor} transition-all duration-300 flex flex-col group overflow-hidden`}
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`px-2.5 py-0.5 rounded-md border text-xxs font-bold uppercase tracking-wider ${post.tagColor}`}>
-                      {post.category}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xxs text-gray-500">
-                      <Clock size={12} />
-                      {post.readTime}
-                    </span>
+                  <div className="w-full h-48 overflow-hidden relative">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
                   </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className={`px-2.5 py-0.5 rounded-md border text-xxs font-bold uppercase tracking-wider ${post.tagColor}`}>
+                        {post.category}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-xxs text-gray-500">
+                        <Clock size={12} />
+                        {post.readTime}
+                      </span>
+                    </div>
 
-                  <h3 className="text-white font-bold text-lg mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
+                    <h3 className="text-white font-bold text-lg mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
 
-                  <p className="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-3">
-                    {post.summary}
-                  </p>
+                    <p className="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-3">
+                      {post.summary}
+                    </p>
 
-                  <div className="mt-auto pt-4 border-t border-[#222]/30 flex items-center justify-between">
-                    <span className="text-xxs text-gray-500 flex items-center gap-1.5">
-                      <Calendar size={12} />
-                      {post.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 group-hover:translate-x-1 transition-transform">
-                      Read Article
-                      <ArrowUpRight size={14} />
-                    </span>
+                    <div className="mt-auto pt-4 border-t border-[#222]/30 flex items-center justify-between">
+                      <span className="text-xxs text-gray-500 flex items-center gap-1.5">
+                        <Calendar size={12} />
+                        {post.date}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 group-hover:translate-x-1 transition-transform">
+                        Read Article
+                        <ArrowUpRight size={14} />
+                      </span>
+                    </div>
                   </div>
                 </article>
               ))}
