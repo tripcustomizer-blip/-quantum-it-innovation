@@ -295,6 +295,14 @@ body {
   .projects-section {
     height: auto;
     flex-direction: column;
+    gap: 1.5rem;
+  }
+  .project-one, .project-two, .project-three {
+    height: 300px !important;
+  }
+  .projects-section > div {
+    height: auto !important;
+    gap: 1.5rem !important;
   }
 }
 
